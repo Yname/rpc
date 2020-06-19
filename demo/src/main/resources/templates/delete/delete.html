@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <th th:text="*{error}"></th>
+    <form action="/User/login/deleteId">
+        删除：<input name="Id" type="text">
+        <input name="删除" type="submit">
+    </form>
+</body>
+</html>

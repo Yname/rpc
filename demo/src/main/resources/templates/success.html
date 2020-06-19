@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    登录成功,欢迎 <th th:text="*{gameuser}"></th> !
+<br/>
+<a href="/User/login_vip">成为vip</a>
+<br>
+<a href="/User/l_index">回到主页</a>
+
+<!--    <th:block th:object="${equip}">-->
+<!--        <input th:value="*{equip_id}">-->
+<!--        <input th:value="*{equip_name}">-->
+<!--    </th:block>-->
+
+<!--    <form th:object="${equip}">-->
+<!--        <input  th:value="*{equip_id}">-->
+<!--        <input  th:value="*{equip_id}">-->
+<!--    </form>-->
+
+
+
+    <form action="/Equip/query" method="get">
+        EquipId:<input name="Id" type="text">
+                <input name="提交" type="submit">
+    </form>
+
+    <form action="/Equip/queryName" method="get">
+        EquipName:<input name="Name" type="text">
+        <input name="提交" type="submit">
+    </form>
+
+    <form action="/Equip/update" method="get">
+        更换的装备Id或名字:<input name="Id" type="text">
+        <input name="提交" type="submit">
+    </form>
+
+    <a href="/Equip/queryById">查看自己装备</a>
+    <a href="/Equip/queryAll">查看所有的装备</a>
+
+    <form action="/Friend/query" method="post">
+        查询好友的Id:<input name="Id" type="text">
+        <input name="查询" type="submit">
+    </form>
+
+    <form action="/Friend/delete" method="post">
+        删除好友的Id:<input name="Id" type="text">
+        <input name="删除" type="submit">
+    </form>
+
+    <form action="/NUser/addBook" method="get">
+        增加的BookId:<input name="BookId" type="text">
+        <input name="提交" type="submit">
+    </form>
+    <form action="/NUser/deleteBookToUser" method="get">
+        删除的BookId:<input name="BookId" type="text">
+        <input name="提交" type="submit">
+    </form>
+<!--    <a href="/NNUser/name">增加Field</a>-->
+    <a href="/NNUser/columns">查看</a>
+
+    <a href="/NUser/queryUserBooK">查询已有Book</a>
+        <br>
+    <a href="/NUser/queryAllBook">查询所有Book</a>
+    <br>
+
+    <a href="/NUser/removeLogin">注销登录</a>
+
+    <a href="/NNUser/table">增加field</a>
+    <a href="/NNUser/expandC">增加Capacity</a>
+
+    <br>
+
+    <th th:each="list:${gameEquips}">
+        <input th:value="${list.getEquip_id()}">
+        <input th:value="${list.getEquip_name()}">
+    </th>
+
+    <th th:each="listBook:${Book}">
+        <input th:value="${listBook.getBookid()}">
+        <input th:value="${listBook.getBookname()}">
+    </th>
+
+<!--    <th th:text="${success}"></th>-->
+<!--    <form >-->
+<!--        <p th:text="*{equipId}"></p>-->
+<!--        <p th:text="*{equipName}"></p>-->
+<!--    </form>-->
+</body>
+</html>

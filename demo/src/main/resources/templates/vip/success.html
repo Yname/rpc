@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+</head>
+<body>
+<!--    <th th:text="*{su}"></th>-->
+    <th th:text="*{success}"></th>
+    <a href="/User/l_index">回到主页</a>
+    <a href="/User/login/l_delete">删除</a>
+    <a href="/User/login/l_update">修改</a>
+    <a href="/User/login/l_query">查询id</a>
+    <a href="/User/login/l_queryName">查询id</a>
+    <a href="/Equip/l_equip">增加装备</a>
+    <form action="/Equip/delete" method="post">
+        删除的装备Id:<input name="Id" type="text">
+        <input name="提交" type="submit">
+    </form>
+
+    <a href="/Equip/equip_l">回到装备查询界面</a>
+</body>
+</html>
