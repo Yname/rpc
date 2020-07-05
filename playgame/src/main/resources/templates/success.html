@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" th:src="@{static/js/jquery-3.5.1.js}"></script>
+    <script>
+        var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+            regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+        function check() {
+            var yzm = document.getElementById("yzm");
+            if (regEn.test(yzm.value) || regCn.test(yzm.value)){
+                alert("验证码不能包含特殊字符哦！")
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <th th:text="${USERID}"></th>
+
+
+    <form action="/User/addVip" onchange="check()" method="post">
+        <label>
+            输入VIP验证码:<input id="yzm" placeholder="请输入验证码！" name="Id" type="text">
+        </label>
+        <input name="添加" type="submit">
+    </form>
+
+
+    <a href="/User/manageEquip">点我查看装备</a> <br>
+
+    <a href="/User/manageAllEquip">查看所有装备</a> <br>
+
+    <a href="/Jump/VipSuccess">前往vip页面</a> <br>
+
+    <a href="/User/cancelLogin">注销登录</a> <br>
+
+    <th th:text="${TEXT}"></th>
+
+    <th th:each="user : ${USERS}">
+       <input th:value="${user.getUser_id()}">
+        <input th:value="${user.getUser_name()}">
+    </th>
+
+<!--    <th th:each="user:${USERS}">-->
+<!--        <input th:value="${user}">-->
+<!--    </th>-->
+</body>
+</html>

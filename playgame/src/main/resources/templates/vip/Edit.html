@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>vip</title>
+</head>
+<body>
+        vip success!
+
+        <div class="card-body" >
+            <table class="table table-hover">
+                <thead>
+                <tr>
+<!--                    <th>#</th>-->
+                    <th>电话</th>
+                    <th>用户名</th>
+<!--                    <th>姓名</th>-->
+<!--                    <th>车牌号</th>-->
+<!--                    <th>电话</th>-->
+<!--                    <th>操作</th>-->
+                </tr>
+                </thead>
+                <tbody>
+<!--                <tr th:object="${USER}">-->
+
+                    <td > <input th:value="${USERID}"/>  </td>
+                    <td >
+                        <input th:value="${USERNAME}"/>  </td>
+
+                    <td>
+                        <div class="btn-group">
+                            <button class="btn btn-sm btn-danger"><a th:href="@{/User/modify(userId = ${USERID},userName =${USERNAME})}" >修改</a></button>
+                            <button class="btn btn-sm btn-danger">拉黑</button>
+                        </div>
+                    </td>
+<!--                </tr>-->
+                </tbody>
+            </table>
+<!--            <ul class="pagination">-->
+<!--                <li class="page-item"><a class="page-link"><span th:text="第+${USERS.pageNum}+页"></span></a></li>-->
+
+<!--                <li class="page-item"><a class="page-link" th:href="@{/User/ALLPage}">首页</a></li>-->
+<!--                <li class="page-item"><a class="page-link" th:href="@{/User/ALLPage(pageNum=1)}">1</a></li>-->
+<!--                <li class="page-item"><a class="page-link" th:href="@{/User/ALLPage(pageNum=2)}">2</a></li>-->
+<!--                <li class="page-item"><a class="page-link" th:href="@{/User/ALLPage(pageNum=2)}">3</a></li>-->
+<!--                <li class="page-item"><a class="page-link" th:href="@{/User/ALLPage(pageNum=${USERS.getNextPage()})}">Next</a></li>-->
+
+
+<!--            </ul>-->
+        </div>
+
+        <a href="/Jump/success">返回主页</a>
+
+</body>
+</html>

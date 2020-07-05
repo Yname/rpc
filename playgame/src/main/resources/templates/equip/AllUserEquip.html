@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body" >
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <!--            <th>#</th>-->
+            <th>装备id</th>
+            <th>装备名字</th>
+            <th>装备的描述</th>
+            <!--            <th>车牌号</th>-->
+            <!--            <th>电话</th>-->
+            <!--            <th>操作</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="equip:${pageInfo.list}">
+            <!--            <td th:text="${item.}"></td>-->
+            <td th:text="${equip.equip_id}">   </td>
+            <p>    </p>
+            <td th:text="${equip.equip_name}">    </td>
+            <td th:text="${equip.equip_des}">    </td>
+            <!--            <td th:text="${equip.getUserMiddleEquip().getEquip_status()}"></td>-->
+
+            <!--            <td th:text="${item.mem_num}"></td>-->
+            <td>
+                <div class="btn-group">
+                    <!--                    <button class="btn btn-sm btn-danger"> <a th:href="@{/User/Edit(userId = ${equip.equip_name})}">编辑</a> </button>-->
+                    <button class="btn btn-sm btn-danger"><a th:href="@{/User/AddEquip(ID = ${equip.equip_id})}">添加装备</a> </button>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <ul class="pagination">
+        <li class="page-item"><a class="page-link"><span th:text="第+${pageInfo.pageNum}+页"></span></a></li>
+        <!--        <li class="page-item"><a class="page-link" th:href="@{/User/manageAll}">首页</a></li>-->
+        <!--        <li class="page-item"><a class="page-link" th:href="@{/User/manageAll(pageNum=1)}">1</a></li>-->
+        <!--        <li class="page-item"><a class="page-link" th:href="@{/User/manageAll(pageNum=2)}">2</a></li>-->
+        <li class="page-item"><a class="page-link" th:href="@{/User/manageAllEquip(pageNum=${pageInfo.getNextPage()})}">Next</a></li>
+    </ul>
+</div>
+<a href="/Jump/success">返回主页</a>
+
+<th th:text="${TEXT}"></th>
+
+
+</body>
+</html>

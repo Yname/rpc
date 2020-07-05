@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" >
+    <title>Title</title>
+
+    <script type="text/javascript" th:src="@{static/js/jquery-3.5.1.js}"></script>
+    <script>
+        var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+            regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+        function check() {
+
+            var id = document.getElementById("move_id").value;
+            var name = document.getElementById("move_name").value;
+            var pwd = document.getElementById("move_pwd").value;
+            if (regEn.test(id) || regCn.test(id) || id.length !== 11){
+                alert("无效的电话！");
+            }
+            if (regEn.test(name) || regCn.test(name)){
+                alert("无效的名字！");
+            }
+            if (pwd.length <= 8 || pwd.length >= 20){
+                alert("密码不能小于8位,大于20位哦！")
+            }
+
+
+        }
+
+        function moveMouseOut(id) {
+            var id1 = document.getElementById(id).value;
+            if (id1 === ""){
+                var string = "不能为空哦！";
+                string.fontcolor('#ff4e37');
+                document.getElementById(id).setAttribute("placeholder",string);
+            }
+        }
+
+        function checkTwo() {
+
+            var id = document.getElementById("move_id").value;
+            var name = document.getElementById("move_name").value;
+            var pwd = document.getElementById("move_pwd").value;
+            if (regEn.test(id) || regCn.test(id) || id.length !== 11){
+                $("#btn").attr("disabled",false);
+            }
+            if (regEn.test(name) || regCn.test(name)){
+            }
+            if (pwd.length <= 8 || pwd.length >= 20){
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+
+注册
+<form method="post" onchange="check()" onsubmit="return checkTwo()" th:action="@{/User/register}" >
+    <label th:name="电话"></label>
+    电话：<input id="move_id" th:name="user_id"  type="text" placeholder="你的电话" onmouseout="moveMouseOut(id)">
+    名字：<input id="move_name" class="move" th:name="user_name" type="text" placeholder="你的名字" onmouseout="moveMouseOut(id)" >
+    密码：<input id="move_pwd" th:name="user_pwd" type="password" placeholder="你的密码" >
+    <button  id="btn" type="submit" disabled="disabled" >登录</button>
+</form>
+    <a href="/Jump/index">返回首页</a>
+    <button disabled="disabled">点击</button>
+</body>
+</html>

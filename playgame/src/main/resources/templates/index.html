@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" th:src="@{static/js/jquery-3.5.1.js}"></script>
+    <script>
+        var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
+            regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
+        function checkId(id) {
+            if (regEn.test(id.value) || regCn.test(id.value) || id.length !== 11){
+                document.getElementById("id_msg").innerHTML = "<font color= 'red' size='1'> 无效的电话 </font>";
+                return false;
+            }
+            document.getElementById("id_msg").innerHTML = "";
+            return true;
+        }
+
+        function checkName(name) {
+            if (regEn.test(name) || regCn.test(name)){
+                document.getElementById("name_msg").innerHTML = "<font color= 'red' size='1'> 无效的名称 </font>";
+                return false;
+            }
+            document.getElementById("name_msg").innerHTML = "";
+            return true;
+        }
+
+        function checkPwd(pwd) {
+            if (pwd.length < 8 || pwd.length >= 20) {
+                document.getElementById("pwd_msg").innerHTML = "<font color= 'red' size='1'> 密码不能小于8位大于20位 </font>";
+                return false;
+            }
+            document.getElementById("pwd_msg").innerHTML = "";
+            return true;
+        }
+
+        // function moveMouseOut(id) {
+        //     document.getElementById("btn").disabled = false;
+        //    var id1 = document.getElementById(id).value;
+        //    if (id1 === ""){
+        //        var string = "不能为空哦！";
+        //        string.fontcolor('#ff4e37');
+        //        document.getElementById(id).setAttribute("placeholder",string);
+        //    }
+        // }
+        function check() {
+            var id = document.getElementById("move_id").value;
+            if (id !== "") {
+                var ID1 = checkId(id);
+            }
+            var name = document.getElementById("move_name").value;
+            if (name !== " ") var Name = checkName(name);
+
+            var pwd = document.getElementById("move_pwd").value;
+            if (pwd !=="") var PWD1 = checkPwd(pwd);
+
+            if (ID1 && Name && PWD1){
+                document.getElementById("btn").disabled = false;
+            }
+        }
+        var word = "欢迎你拜访我的个人网站";
+        alert(word);
+    </script>
+</head>
+<body>
+
+    登录
+    <form method="post"  th:action="@{/User/login}"  >
+        <label> <span id="id_msg"></span> <br>
+            电话：<input id="move_id" th:name="user_id"  type="text" placeholder="你的电话" onchange="return check()" onmouseout="moveMouseOut(id)">
+        </label> <br>
+        <label> <span id="name_msg"></span> <br>
+            名字：<input id="move_name" th:name="user_name" type="text" placeholder="你的名字" onchange="return check()" onmouseout="moveMouseOut(id)">
+        </label> <br>
+        <label> <span id="pwd_msg"></span> <br>
+            密码：<input id="move_pwd" th:name="user_pwd" type="password" placeholder="你的密码" onchange="return check()" onmouseout="moveMouseOut(id)">
+        </label> <br><br>
+
+        <button disabled="disabled" id="btn" type="submit" style="margin-left:  55px" > &nbsp;&nbsp; 登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录 &nbsp;&nbsp; </button> <br>
+
+        <a href="/Jump/register" >没有账号点击这里注册</a>
+    </form>
+
+</body>
+</html>
