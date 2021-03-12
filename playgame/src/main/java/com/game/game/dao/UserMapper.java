@@ -4,7 +4,6 @@ import com.game.game.entity.Equip;
 import com.game.game.entity.User;
 import com.game.game.entity.UserMiddleEquip;
 import org.apache.ibatis.annotations.Mapper;
-import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.List;
 

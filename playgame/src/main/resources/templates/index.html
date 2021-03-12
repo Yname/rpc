@@ -5,11 +5,13 @@
     <title>Title</title>
     <script type="text/javascript" th:src="@{static/js/jquery-3.5.1.js}"></script>
     <script>
+        var word = "欢迎你拜访我的个人网站";
+        alert(word);
         var regEn = /[`~!@#$%^&*()_+<>?:"{},.\/;'[\]]/im,
             regCn = /[·！#￥（——）：；“”‘、，|《。》？、【】[\]]/im;
         function checkId(id) {
             if (regEn.test(id.value) || regCn.test(id.value) || id.length !== 11){
-                document.getElementById("id_msg").innerHTML = "<font color= 'red' size='1'> 无效的电话 </font>";
+                document.getElementById("id_msg").innerHTML = "<font color= 'red' size='2'> 无效的电话 </font>";
                 return false;
             }
             document.getElementById("id_msg").innerHTML = "";
@@ -18,7 +20,7 @@
 
         function checkName(name) {
             if (regEn.test(name) || regCn.test(name)){
-                document.getElementById("name_msg").innerHTML = "<font color= 'red' size='1'> 无效的名称 </font>";
+                document.getElementById("name_msg").innerHTML = "<font color= 'red' size='2'> 无效的名称 </font>";
                 return false;
             }
             document.getElementById("name_msg").innerHTML = "";
@@ -58,28 +60,47 @@
                 document.getElementById("btn").disabled = false;
             }
         }
-        var word = "欢迎你拜访我的个人网站";
-        alert(word);
+        function show(){
+            document.getElementById("form_id").style.display = '';
+        }
+        document.getElementById("form_id").style.display = 'none';
     </script>
+    <style type="text/css">
+        .form_body{
+            margin-left: 1200px;
+            margin-top: 300px;
+
+
+            border-color: aqua;
+            border-style: solid;
+
+        }
+        .in_id{
+            margin-left: 30px;
+
+        }
+        .href_in{
+            margin-left: 60px;
+        }
+    </style>
 </head>
 <body>
 
-    登录
-    <form method="post"  th:action="@{/User/login}"  >
+<p onclick="show()" >点击登录</p>
+    <div style="display: none" id="form_id" class="form_body" >
+    <form method="post"   th:action="@{/User/login}"  >
         <label> <span id="id_msg"></span> <br>
-            电话：<input id="move_id" th:name="user_id"  type="text" placeholder="你的电话" onchange="return check()" onmouseout="moveMouseOut(id)">
+            &nbsp;&nbsp;&nbsp;&nbsp;电&nbsp;&nbsp;&nbsp;&nbsp;话：<input id="move_id" class="in_id" th:name="user_id"  type="text" placeholder="你的电话" onchange="return check()" onmouseout="moveMouseOut(id)">
         </label> <br>
         <label> <span id="name_msg"></span> <br>
-            名字：<input id="move_name" th:name="user_name" type="text" placeholder="你的名字" onchange="return check()" onmouseout="moveMouseOut(id)">
+            &nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;&nbsp;&nbsp;&nbsp;字：<input id="move_name" class="in_id" th:name="user_name" type="text" placeholder="你的名字" onchange="return check()" onmouseout="moveMouseOut(id)">
         </label> <br>
         <label> <span id="pwd_msg"></span> <br>
-            密码：<input id="move_pwd" th:name="user_pwd" type="password" placeholder="你的密码" onchange="return check()" onmouseout="moveMouseOut(id)">
+            &nbsp;&nbsp;&nbsp;&nbsp;密&nbsp;&nbsp;&nbsp;&nbsp;码：<input id="move_pwd" class="in_id" th:name="user_pwd" type="password" placeholder="你的密码" onchange="return check()" onmouseout="moveMouseOut(id)">
         </label> <br><br>
-
-        <button disabled="disabled" id="btn" type="submit" style="margin-left:  55px" > &nbsp;&nbsp; 登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录 &nbsp;&nbsp; </button> <br>
-
-        <a href="/Jump/register" >没有账号点击这里注册</a>
+        <button disabled="disabled" class="in_id" id="btn" type="submit" style="margin-left:  55px" > &nbsp;&nbsp; 登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录 &nbsp;&nbsp; </button> <br><br>
+       <div class="href_in"> <a href="/Jump/register" >没有账号点击这里注册</a> </div>
     </form>
-
+    </div>
 </body>
 </html>

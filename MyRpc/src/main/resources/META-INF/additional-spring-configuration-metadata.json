@@ -1,0 +1,18 @@
+{
+  "properties": [
+    {
+      "name": "yzznetty.port",
+      "type": "java.lang.String",
+      "description": "Description for yzznetty.port."
+    },
+    {
+      "name": "yzznetty.host",
+      "type": "java.lang.String",
+      "description": "Description for yzznetty.host."
+    },
+    {
+      "name": "yzznetty.handlerClass",
+      "type": "java.lang.Class",
+      "description": "Description for yzznetty.handlerClass."
+    }
+  ] }

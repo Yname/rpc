@@ -13,7 +13,7 @@ public class Equip {
     private String equip_id;
     private String equip_name;
     private String equip_des;
-    private UserMiddleEquip userMiddleEquip;
+
 
 
 }
